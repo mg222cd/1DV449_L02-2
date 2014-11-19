@@ -73,7 +73,7 @@ public function checkUser() {
 	if(!isset($_SESSION["username"])) {header('HTTP/1.1 401 Unauthorized'); die();}
 
 	if(isset($_SESSION['login_string'])) {
-		if(password_verify($_SESSION["username"], $_SESSION["login_string"])) {
+		if(!password_verify($_SESSION["username"] . $_SERVER['HTTP_USER_AGENT'], $_SESSION["login_string"])) {
 			header('HTTP/1.1 401 Unauthorized'); die();
 		}
 	}
@@ -89,7 +89,7 @@ public function loginUser($u, $p) {
 			$result = $this->callToDatabase($q, array($u, $p));
 			if($result != false) {
 				$_SESSION['username'] = $u;
-				$_SESSION['login_string'] = password_hash($u, PASSWORD_DEFAULT);
+				$_SESSION['login_string'] = password_hash($u . $_SERVER['HTTP_USER_AGENT'], PASSWORD_DEFAULT);
 				header("Location: mess.php");
 				die;
 			}
@@ -105,11 +105,11 @@ public function getUser($user) {
 }
 
 public function logout() {
-
 	if(!session_id()) {
 		$this->sec_session_start();
 	}
-	session_end();
+	session_destroy();
+	//session_end();
 	header('Location: index.php');
 }
 

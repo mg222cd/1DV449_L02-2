@@ -1,3 +1,8 @@
+<?php
+require_once("application.php");
+$application = new application();
+$application->checkUser();
+?>
 <!DOCTYPE html>
 <html lang="sv">
   <head>

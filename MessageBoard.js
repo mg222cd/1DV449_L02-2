@@ -134,7 +134,15 @@ var MessageBoard = {
          alert(showTime);
     },
     logout: function() {
-        window.location = "index.php";
+        $.ajax({
+            type: "GET",
+            url: "functions.php",
+            data: {function: "logout"}
+        }).done(function(data) { // called when the AJAX call is ready
+                        
+            window.location = "index.php";
+            
+        });
     }
 }
 
