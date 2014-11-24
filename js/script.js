@@ -1,6 +1,6 @@
 $(document).ready(function() {
-          MessageBoard.getMessages();
-        });
+  MessageBoard.getMessages(0);
+});
 
 /*!
  * Bootstrap v3.3.1 (http://getbootstrap.com)

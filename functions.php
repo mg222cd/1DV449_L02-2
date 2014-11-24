@@ -17,7 +17,7 @@ if(isset($_GET['function'])) {
 			$application->addToDB($_GET["message"],  $_GET["name"]);
 			break;
 		case 'getMessages':
-			echo $application->getMessages();
+			echo $application->getMessages($_GET['id']);
 			break;
 	}
 }

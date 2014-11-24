@@ -29,9 +29,9 @@ $application->checkUser();
                 <span class="clear">&nbsp;</span>
             </div>
         </div>
-            <script src="js/script.js"></script>
             <script type="text/javascript" src="js/jquery.js"></script>
             <script src="MessageBoard.js"></script>
             <script src="Message.js"></script>
+            <script src="js/script.js"></script>
 	</body>
 	</html>

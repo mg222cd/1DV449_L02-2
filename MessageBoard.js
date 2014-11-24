@@ -28,19 +28,18 @@ var MessageBoard = {
                                                 }
     
     },
-    getMessages:function() {
-        console.log("INNE");
+    getMessages:function(id) {
         $.ajax({
 			type: "GET",
 			url: "functions.php",
-			data: {function: "getMessages"}
+			data: {function: "getMessages", id: id}
 		}).done(function(data) { // called when the AJAX call is ready
 						
 			data = JSON.parse(data);
-		
+		    id = data.id;  
 			
-			for(var mess in data) {
-				var obj = data[mess];
+			for(var mess in data.messages) {
+				var obj = data.messages[mess];
 			    var text = obj.name +" said:\n" +obj.message;
 				var mess = new Message(text, new Date());
                 var messageID = MessageBoard.messages.push(mess)-1;
@@ -49,7 +48,7 @@ var MessageBoard = {
 				
 			}
 			document.getElementById("nrOfMessages").innerHTML = MessageBoard.messages.length;
-			
+			MessageBoard.getMessages(id);
 		});
 	
 
@@ -115,7 +114,7 @@ var MessageBoard = {
 
         div.appendChild(spanClear);        
         
-        MessageBoard.messageArea.appendChild(div);       
+        MessageBoard.messageArea.insertBefore(div, MessageBoard.messageArea.childNodes[0]);       
     },
     removeMessage: function(messageID){
 		if(window.confirm("Vill du verkligen radera meddelandet?")){

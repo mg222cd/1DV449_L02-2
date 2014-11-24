@@ -16,14 +16,11 @@ private function callToDatabase($q, $sqlParams = array()){
 		die("Something went wrong -> " .$e->getMessage());
 	}
 	
-	$result ='';
+	$result = '';
 	try {
 		$stm = $db->prepare($q);
 		$stm->execute($sqlParams);
 		$result = $stm->fetchAll();
-		if(!$result) {
-			return FALSE;
-		}
 	}
 	catch(PDOException $e) {
 		echo("Error creating query: " .$e->getMessage());
@@ -114,9 +111,16 @@ public function logout() {
 }
 
 // get the specific message
-public function getMessages() {
-	$q = "SELECT * FROM messages";
-		return json_encode($this->callToDatabase($q));
+public function getMessages($id=0) {
+	$return = array();
+	$q = "SELECT * FROM messages WHERE serial > ?";
+	$return = $this->callToDatabase($q, array($id));
+
+	if (count($return) > 0 ) {
+		$id = $return[count($return)-1][0];
+	}
+
+	return json_encode(array('id'=>$id,'messages'=>$return));
 }
 
 
