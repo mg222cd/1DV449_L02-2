@@ -47,7 +47,7 @@ public function addToDB($message, $user) {
 		header("Location: test/debug.php");
 	}
 
-/**
+/*
 Just som simple scripts for session handling
 */
 public function sec_session_start() {
@@ -112,15 +112,19 @@ public function logout() {
 
 // get the specific message
 public function getMessages($id=0) {
-	$return = array();
-	$q = "SELECT * FROM messages WHERE serial > ?";
-	$return = $this->callToDatabase($q, array($id));
+	set_time_limit(0);
+	while (true) {
+		$return = array();
+		$q = "SELECT * FROM messages WHERE serial > ?";
+		$return = $this->callToDatabase($q, array($id));
 
-	if (count($return) > 0 ) {
-		$id = $return[count($return)-1][0];
+		if (count($return) > 0 ) {
+			$id = $return[count($return)-1][0];
+			echo json_encode(array('id'=>$id,'messages'=>$return));
+			break;
+		}
 	}
-
-	return json_encode(array('id'=>$id,'messages'=>$return));
+	
 }
 
 

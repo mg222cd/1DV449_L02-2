@@ -12,8 +12,7 @@ $application->checkUser();
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="pic/favicon.png">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="css/dyn.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
 	<title>Messy Labbage</title>
   </head>
   <body>
@@ -29,9 +28,6 @@ $application->checkUser();
                 <span class="clear">&nbsp;</span>
             </div>
         </div>
-            <script type="text/javascript" src="js/jquery.js"></script>
-            <script src="MessageBoard.js"></script>
-            <script src="Message.js"></script>
-            <script src="js/script.js"></script>
+            <script src="js/script.min.js"></script>
 	</body>
 	</html>

@@ -1,5 +1,7 @@
 $(document).ready(function() {
+  if(document.getElementById("messagearea") !== null) {
   MessageBoard.getMessages(0);
+}
 });
 
 /*!

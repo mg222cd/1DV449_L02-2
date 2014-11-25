@@ -6,7 +6,7 @@ var MessageBoard = {
 
     init:function(e)
     {
-	
+	if(document.getElementById("messagearea") !== null) {
 		    MessageBoard.textField = document.getElementById("inputText");
 		    MessageBoard.nameField = document.getElementById("inputName");
             MessageBoard.messageArea = document.getElementById("messagearea");
@@ -26,7 +26,7 @@ var MessageBoard = {
                                                         return false;
                                                     }
                                                 }
-    
+    }
     },
     getMessages:function(id) {
         $.ajax({

@@ -9,6 +9,8 @@ $application->sec_session_start();
 * It's here all the ajax calls goes
 */
 if(isset($_GET['function'])) {
+	$application->checkUser();
+	session_write_close();
 	switch ($_GET['function']) {
 		case 'logout':
 			$application->logout();

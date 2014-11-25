@@ -7,8 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="pic/favicon.png">
-    <link href="css/bootstrap.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="css/dyn.css">	
+    <link href="css/style.css" rel="stylesheet">
 	<title>Mezzy Labbage - Logga in</title>
   </head>
   <body id="body">
@@ -20,7 +19,7 @@
         <button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
       </form>
     </div> 
-    <script src="js/bootstrap.js"></script>
+    <script src="js/script.min.js"></script>
   </body>
 </html>
 
