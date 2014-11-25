@@ -5,7 +5,11 @@
 Förutom de förbättringspunkter som finns definierade nedan har PHP-koden strukturerats om endel för att göra den mer
 överskådlig och för min del i den här labben lättare att arbeta i. De förändringar jag gjort är bl.a att 
 <ul>
-<li>skapa ny fil och klass - Application.php, där funktioner lagts från post.php, get.php, sec.php </li>
+<li>skapa ny fil och klass - Application.php, där funktioner lagts från post.php, get.php, sec.php (dessa filer är därefter borttagna). 
+</li>
+<li>
+Bytt namn på filen check.php till functions.php, och även styrt om action i login-formuläret till functions.php.
+</li>
 </ul>
 </p>
 <h2>Del 1 - Säkerhetsproblem</h2>
