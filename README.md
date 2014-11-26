@@ -123,16 +123,33 @@ Hur du har åtgärdat säkerhetshålet i applikationskoden?
 Dubbelkoll av sessionen sker, via funktionerna checkUser() och loginUser() (här användes tidigare olika sessioner). I funktionen addToDB (i Application-klassen) görs även kontroll så att meddelanden bara kan skickas in av en inloggad användare.
 </p>
 <h2>Optimering</h2>
-<h3>Åtgärd - Färre requests</hr>
+<p>
+"Boken" som anges nedan, syftar till High Performance Web Sites, Steve Souders.
+</p>
+<h3>Åtgärd - Färre http-requests</hr>
 <strong>
-Teori kring åtgärden (förklara varför du implementerar den och vad säger teorin om vad denna åtgärd gör). Referens till vart du hittat denna teori ska anges!
+Teori och referens.
 </strong>
+<p>
+Tas upp i kapitel 1 i boken, och sygtar på att man genom att man ska undvika onödiga http-requests genom att använda image-maps, sprites och inline-images. Färre requests kan även uppnås med färre större filer för JS och CSS.
+</p>
 <strong>
-Observation (laddningstid, storlekar av resurser, anrop m.m.) innan åtgård (utan webläsar-cache - gärna ett medeltal av ett antal testningar)
+Observation innan åtgård.
 </strong>
+<p>
+Här fanns knappt några bilder att lägga image-maps och sprites på. De få bilder som fanns användes som logotyper eller favicon. Hade kryss-bilden bredvid meddelandena varit implementerad hade man kunnat lägga image-map på den och klockan. Logotyp-bilden ändrades till inline-image, för att undvika request. Tog även bort inlänkade bilden "p.jpg", som inte användes. 
+</p>
 <strong>
-Observation (laddningstid, storlekar av resurser, anrop m.m.) efter åtgärd (utan webläsar-cache - gärna ett medeltal av ett antal testningar)
+Observation efter åtgärd.
 </strong>
+<p>
+Logon från 230 → 0 ms.<br/>
+Oanvänd p.jpg 266 → 0 ms.<br/>
+mess.php från 200 → 190 ms.<br/>
+</p>
 <strong>
-Reflektion kring att testresultatet blev som det blev.
+Reflektion.
 </strong>
+<p>
+Tidsskillnaden blev tydlig för varje bild, men resultatet knappt märkbart på huvudsidan. Förmodligen större vinst att göra detta i de fall så man har fler bilder på sidan.
+</p>
