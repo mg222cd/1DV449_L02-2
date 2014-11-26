@@ -39,7 +39,6 @@ Hur du har åtgärdat säkerhetshålet i applikationskoden?
 Genom att använda php-funktionen "strip_tags" på allt som skickas in i databasen säkerställs så att allt som skickas in är avskalat från taggar. Vill här tillägga att jag även försökte använda htmlspecialchars() för att även filtrera utdatat, men detta fick jag ej att fungera.
 </p>
 <h3>Säkerhetsrisk - SQL-injections</h3>
-<ul>
 <strong>
 Redogör för det säkerhetshål du hittat.
 </strong>
