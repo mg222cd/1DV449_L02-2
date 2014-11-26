@@ -105,6 +105,7 @@ public function logout() {
 	if(!session_id()) {
 		$this->sec_session_start();
 	}
+	setcookie( 'sec_session_id', '', time() - 3600, '/' );
 	session_destroy();
 	//session_end();
 	header('Location: index.php');
