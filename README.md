@@ -14,7 +14,6 @@ Bytt namn på filen check.php till functions.php,  och även styrt om action i l
 </p>
 <h2>Del 1 - Säkerhetsproblem</h2>
 <h3>Säkerhetsrisk - Skicka in taggar ock kod.</h3>
-<ul>
 <strong>
 Redogör för det säkerhetshål du hittat.
 </strong>
