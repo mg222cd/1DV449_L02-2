@@ -22,7 +22,7 @@ I mess.php har inkluderingen av get.php bytts ut mot Application.php
 </ul>
 </p>
 <h2>Del 1 - Säkerhetsproblem</h2>
-<h3>Säkerhetsrisk - Skicka in taggar ock kod.</h3>
+<h3>Säkerhetsrisk - Taggar och kod.</h3>
 <strong>
 Redogör för det säkerhetshål du hittat.
 </strong>
@@ -46,31 +46,6 @@ Hur du har åtgärdat säkerhetshålet i applikationskoden?
 </strong>
 <p>
 Genom att använda php-funktionen "strip_tags" på allt som skickas in i databasen säkerställs så att allt som skickas in är avskalat från taggar. Vill här tillägga att jag även försökte använda htmlspecialchars() för att även filtrera utdatat, men detta fick jag ej att fungera.
-</p>
-<h3>Säkerhetsrisk - SQL-injections</h3>
-<strong>
-Redogör för det säkerhetshål du hittat.
-</strong>
-<p>
-Man kunde skicka in SQL direkt till databasen, via login eller meddelande-fälten.
-</p>
-<strong>
-Redogör för hur säkerhetshålet kan utnyttjas.
-</strong>
-<p>
-Genom att skicka in SQL in i databasen kan man antingen förstöra den eller hämta ut data känslig data från databasen. I det här fallet i form av användarnamn, lösenord och meddelanden.
-</p>
-<strong>
-Vad för skada kan säkerhetsbristen göra?
-</strong>
-<p>
-SQL injections kan användas antingen för att förstöra databasen (och därmed också applikationen) eller för att få ut känsliga uppgifter, tillexempel privata meddelanden och framförallt användaruppgifter och lösenord. Om lösenorden inte är hashade och saltade kan de gå att "knäcka", vilket är extra illa om användaren använt samma lösenorde på i flera applikationer.
-</p>
-<strong>
-Hur du har åtgärdat säkerhetshålet i applikationskoden?
-</strong>
-<p>
-Alla databasfunktioner (och kod som körs många gånger) är flyttade till en ny funktion "callToDatabase". Här används korrekt PDO-syntax och parametrarna körs igenom prepare() execute()-funktionen istället för att läggas in direkt i SQL-frågan.
 </p>
 <h3>Säkerhetsrisk - SQL-injections</h3>
 <strong>
@@ -147,3 +122,17 @@ Hur du har åtgärdat säkerhetshålet i applikationskoden?
 <p>
 Dubbelkoll av sessionen sker, via funktionerna checkUser() och loginUser() (här användes tidigare olika sessioner). I funktionen addToDB (i Application-klassen) görs även kontroll så att meddelanden bara kan skickas in av en inloggad användare.
 </p>
+<h2>Optimering</h2>
+<h3>Åtgärd - Färre requests</hr>
+<strong>
+Teori kring åtgärden (förklara varför du implementerar den och vad säger teorin om vad denna åtgärd gör). Referens till vart du hittat denna teori ska anges!
+</strong>
+<strong>
+Observation (laddningstid, storlekar av resurser, anrop m.m.) innan åtgård (utan webläsar-cache - gärna ett medeltal av ett antal testningar)
+</strong>
+<strong>
+Observation (laddningstid, storlekar av resurser, anrop m.m.) efter åtgärd (utan webläsar-cache - gärna ett medeltal av ett antal testningar)
+</strong>
+<strong>
+Reflektion kring att testresultatet blev som det blev.
+</strong>
