@@ -102,7 +102,7 @@ Alla databasfunktioner (och kod som körs många gånger) är flyttade till en n
 Redogör för det säkerhetshål du hittat.
 </strong>
 <p>
-Man kunde stjäla sessioner och även återanvända sessioner efter att utloggning skett. Man kunde också ganska lätt skriva egna sessioner, pga ett de namngivits med användarnamn och en enkel standardsträng.
+Man kunde stjäla sessioner och även återanvända sessioner efter att utloggning skett. Man kunde också ganska lätt skriva egna sessioner, pga ett de namngivits med användarnamn och en enkel standardsträng. 
 </p>
 <strong>
 Redogör för hur säkerhetshålet kan utnyttjas.
@@ -114,11 +114,36 @@ De ovan nämnda säkerhetsriskerna gör det tämligen lätt att stjäla sessione
 Vad för skada kan säkerhetsbristen göra?
 </strong>
 <p>
-Genom att stjäla sessioner kan man logga in på användarens konto.
+Genom att stjäla sessioner kan man logga in på annan användarens konto.
 </p>
 <strong>
 Hur du har åtgärdat säkerhetshålet i applikationskoden?
 </strong>
 <p>
-Sessionerna är nu krypterade, så att det inte lika lätt ska kunna knäckas. Till sessionen har även lagts in HTTPUSERAGENT, så att varje session blir unik och därmed inte går att återanvända av annan dator och webbläsare än där inloggningen gjorts. Funktionalitet har även lagts till för att ta bort sessionen vid utloggning, med "session_destroy" och genom att sätta giltighetstiden till -3600.
+Sessionerna är nu krypterade, så att det inte lika lätt ska kunna knäckas. Till sessionen har även lagts in HTTPUSERAGENT, så att varje session blir unik och därmed inte går att återanvända av annan dator och webbläsare än där inloggningen gjorts. Funktionalitet har även lagts till för att ta bort sessionen vid utloggning, med "session_destroy" och genom att sätta giltighetstiden till -3600. 
+</p>
+<h3>Säkerhetsrisk - Oautensierad login</h3>
+<strong>
+Redogör för det säkerhetshål du hittat.
+</strong>
+<p>
+Man kunde komma in på applikationen utan att göra en giltig login, genom att lägga till "mess.php" i URL:en. Man kunde även skicka in meddelanden i applikationen utan att vara inloggad, via konsolen.
+</p>
+<strong>
+Redogör för hur säkerhetshålet kan utnyttjas.
+</strong>
+<p>
+Obehöriga och ej registrerade användare kommer åt sidor man inte ska komma åt utan att vara inloggad.
+</p>
+<strong>
+Vad för skada kan säkerhetsbristen göra?
+</strong>
+<p>
+Man kan använda och komma åt applikationen utan att vara behörig.
+</p>
+<strong>
+Hur du har åtgärdat säkerhetshålet i applikationskoden?
+</strong>
+<p>
+Dubbelkoll av sessionen sker, via funktionerna checkUser() och loginUser() (här användes tidigare olika sessioner). I funktionen addToDB (i Application-klassen) görs även kontroll så att meddelanden bara kan skickas in av en inloggad användare.
 </p>
