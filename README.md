@@ -5,7 +5,7 @@
 Förutom de förbättringspunkter som finns definierade nedan har PHP-koden strukturerats om endel för att göra den mer
 överskådlig och för min del i den här labben lättare att arbeta i. De förändringar jag gjort är bl.a att 
 <ul>
-<li>Skapat ny klass - Application.php, där funktioner lagts från post.php, get.php, sec.php (dessa filer och klasser är därefter borttagna). 
+<li>Skapat ny klass - Application.php, där funktioner lagts från post.php, get.php, sec.php (dessa filer och klasser är därefter borttagna). Detta för att hålla funktioner och anrop inom samma klass.
 </li>
 <li>
 Bytt namn på filen check.php till functions.php,  och även styrt om action i login-formuläret till functions.php.
@@ -21,15 +21,15 @@ Redogör för det säkerhetshål du hittat.
 <li>
 Redogör för hur säkerhetshålet kan utnyttjas.
 </li>
-<p>
+<i>
 Illasinnade användare kan utnyttja funktionaliteten att skicka in kod i form av HTML och Jav i applikationen.
-</p>
+</i>
 <li>
 Vad för skada kan säkerhetsbristen göra?
 </li>
-<p>
+<i>
 Genom att skicka in html och/eller JavaScript kan man få in kod för att utföra olika attacker, t.ex XSS, där man skickar in länkar/bilder, och vid klick på dessa har man ett dolt script där man stjäl namnet på användarens sessionscookie. Denna cookie kan sedan användas för att logga in.
-</p>
+</i>
 <li>
 Hur du har åtgärdat säkerhetshålet i applikationskoden?
 </li>
