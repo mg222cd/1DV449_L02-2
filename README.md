@@ -15,24 +15,27 @@ Bytt namn på filen check.php till functions.php,  och även styrt om action i l
 <h2>Del 1 - Säkerhetsproblem</h2>
 <h3>Säkerhetsrisk - Skicka in taggar ock kod.</h3>
 <ul>
-<li>
+<strong>
 Redogör för det säkerhetshål du hittat.
-</li>
-<li>
-Redogör för hur säkerhetshålet kan utnyttjas.
-</li>
-<i>
-Illasinnade användare kan utnyttja funktionaliteten att skicka in kod i form av HTML och Jav i applikationen.
-</i>
-<li>
-Vad för skada kan säkerhetsbristen göra?
-</li>
-<i>
-Genom att skicka in html och/eller JavaScript kan man få in kod för att utföra olika attacker, t.ex XSS, där man skickar in länkar/bilder, och vid klick på dessa har man ett dolt script där man stjäl namnet på användarens sessionscookie. Denna cookie kan sedan användas för att logga in.
-</i>
-<li>
-Hur du har åtgärdat säkerhetshålet i applikationskoden?
-</li>
+</strong>
 <p>
-Genom att använda php-funktionen "strip_tags" på allt som skickas in i databasen säkerställs så att ingen HTML eller JavaScript kan skickas in.
+Man kan i alla skicka in HTML-taggar och Javascript utan att applikationen på något vis kontrollerar eller filtrerar detta.
+</p>
+<strong>
+Redogör för hur säkerhetshålet kan utnyttjas.
+</strong>
+<p>
+Illasinnade användare kan utnyttja funktionaliteten att skicka in kod i form av HTML och JavaScript i samband med inloggningen och/eller i meddelanderutorna i chatten.
+</p>
+<strong>
+Vad för skada kan säkerhetsbristen göra?
+</strong>
+<i>
+Genom att skicka in HTML och/eller JavaScript kan man få in kod som förstör applikationen eller för att utföra olika attacker, t.ex XSS (Cross Site Scripting), där man skjuter in länkar/bilder i applikationen som innehåller dolda script för att komma åt användarens sessionscookie. Denna cookie kan sedan användas för att logga in.
+</i>
+<strong>
+Hur du har åtgärdat säkerhetshålet i applikationskoden?
+</strong>
+<p>
+Genom att använda php-funktionen "strip_tags" på allt som skickas in i databasen säkerställs så att allt som skickas in är avskalat från taggar.
 </p>
