@@ -126,7 +126,7 @@ Dubbelkoll av sessionen sker, via funktionerna checkUser() och loginUser() (här
 <p>
 "Boken" som anges nedan, syftar till High Performance Web Sites, Steve Souders.
 </p>
-<h3>Åtgärd - Färre http-requests</hr>
+<h3>Åtgärd - Färre http-requests</h3>
 <strong>
 Teori och referens.
 </strong>
@@ -152,4 +152,32 @@ Reflektion.
 </strong>
 <p>
 Tidsskillnaden blev tydlig för varje bild, men resultatet knappt märkbart på huvudsidan. Förmodligen större vinst att göra detta i de fall så man har fler bilder på sidan.
+</p>
+
+<h3>CSS placeras högst upp med link-taggen</h3>
+<strong>
+Teori och referens.
+</strong>
+<p>
+...
+</p>
+<strong>
+Observation innan åtgård.
+</strong>
+<p>
+...
+</p>
+<strong>
+Observation efter åtgärd.
+</strong>
+<p>
+Logon från 230 → 0 ms.<br/>
+Oanvänd p.jpg 266 → 0 ms.<br/>
+mess.php från 200 → 190 ms.<br/>
+</p>
+<strong>
+Reflektion.
+</strong>
+<p>
+...
 </p>
