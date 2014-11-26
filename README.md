@@ -30,9 +30,9 @@ Illasinnade användare kan utnyttja funktionaliteten att skicka in kod i form av
 <strong>
 Vad för skada kan säkerhetsbristen göra?
 </strong>
-<i>
+<p>
 Genom att skicka in HTML och/eller JavaScript kan man få in kod som förstör applikationen eller för att utföra olika attacker, t.ex XSS (Cross Site Scripting), där man skjuter in länkar/bilder i applikationen som innehåller dolda script för att komma åt användarens sessionscookie. Denna cookie kan sedan användas för att logga in.
-</i>
+</p>
 <strong>
 Hur du har åtgärdat säkerhetshålet i applikationskoden?
 </strong>
