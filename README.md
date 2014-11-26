@@ -97,3 +97,28 @@ Hur du har åtgärdat säkerhetshålet i applikationskoden?
 <p>
 Alla databasfunktioner (och kod som körs många gånger) är flyttade till en ny funktion "callToDatabase". Här används korrekt PDO-syntax och parametrarna körs igenom prepare() execute()-funktionen istället för att läggas in direkt i SQL-frågan.
 </p>
+<h3>Säkerhetsrisk - Session hijacking</h3>
+<strong>
+Redogör för det säkerhetshål du hittat.
+</strong>
+<p>
+Man kunde stjäla sessioner och även återanvända sessioner efter att utloggning skett. Man kunde också ganska lätt skriva egna sessioner, pga ett de namngivits med användarnamn och en enkel standardsträng.
+</p>
+<strong>
+Redogör för hur säkerhetshålet kan utnyttjas.
+</strong>
+<p>
+De ovan nämnda säkerhetsriskerna gör det tämligen lätt att stjäla sessioner.
+</p>
+<strong>
+Vad för skada kan säkerhetsbristen göra?
+</strong>
+<p>
+Genom att stjäla sessioner kan man logga in på användarens konto.
+</p>
+<strong>
+Hur du har åtgärdat säkerhetshålet i applikationskoden?
+</strong>
+<p>
+Sessionerna är nu krypterade, så att det inte lika lätt ska kunna knäckas. Till sessionen har även lagts in HTTPUSERAGENT, så att varje session blir unik och därmed inte går att återanvända av annan dator och webbläsare än där inloggningen gjorts. Funktionalitet har även lagts till för att ta bort sessionen vid utloggning, med "session_destroy" och genom att sätta giltighetstiden till -3600.
+</p>
