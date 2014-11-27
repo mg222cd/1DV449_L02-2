@@ -206,7 +206,7 @@ Reflektion.
 <p>
 På tidsskillnaderna ses att huvuddokumenten minskat medan själva filerna ökat. Det man vill komma åt här är ju tidsminskning på själva dokumentet. Här syns det, men det hade synts tydligare om omfattningen på koden som flyttats varit större. Tidsvinsten med att samma fil kan återanvändas istället för att koden ska skrivas om finns inte heller med.
 </p>
-<h3>Åtgärd - Minimera JavaScript och CSS</h3>
+<h3>Åtgärd - Minifiera JavaScript och CSS</h3>
 <strong>
 Teori och referens.
 </strong>
@@ -241,28 +241,30 @@ På denna punkt märktes stor skillnad. Förmodligen blev skillnaden, som här v
 </p>
 
 
-<h3>Åtgärd - Ta bort dupplicerade script</h3>
+<h3>Åtgärd - Ta bort duplicerade script</h3>
 <strong>
 Teori och referens.
 </strong>
 <p>
-...
+Tas upp i kapitel 12 i boken. Syftar framförallt på större webbsidor, där det är vanligt att samma script råkar läggas till flera gånger. Detta gör webbsidorna långsammare och skapar i Internet Explorer fler redirects, då alla script (även om dem är samma) utvärderas och läses in på nytt. I Boken föreslås att problemet kan kringgås genom att man använder en script modul för alla filer som läggs till. Där kontrolleras att scriptes inte redan finns, och tas isåfall bort. 
 </p>
 <strong>
 Observation innan åtgård.
 </strong>
 <p>
-...
+I den här applicationen hittades inga dupplicerade scripts, däremot återfanns inlänkade scripts som aldrig användes, vilka togs bort.
 </p>
 <strong>
 Observation efter åtgärd.
 </strong>
 <p>
-...
+bootstrap.js 360 → 0 ms.
+longpoll.js 70 → 0 ms.
 </p>
 <strong>
 Reflektion.
 </strong>
 <p>
-...
+Här syns en tydlig skillnad i tidsåtgång för varje script som tas bort. Jag kan tänka mig att det här probelmet är ganska vanligt, att script läggs in på flera sidor pga ren slarvighet och okunskaper i hur det påverkar laddningstiderna.
 </p>
+<h2>Long polling</h2>
