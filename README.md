@@ -195,10 +195,10 @@ I filerna mess.php och index.php har inline-css flyttats till externa filer. I m
 Observation efter åtgärd.
 </strong>
 <p>
-För CSS-filerna: 0 → 100 ms. respektive 0 → 330 ms.
-Javascript-filen: 330 → 335 ms (efter borttagning av tomrader minskning med 2 ms till).
-Huvuddokumentet mess.php 160 → 150 ms.
-Huvuddokumentet index.php 180 → 165 ms. 
+För CSS-filerna: 0 → 100 ms. respektive 0 → 330 ms.<br/>
+Javascript-filen: 330 → 335 ms (efter borttagning av tomrader minskning med 2 ms till).<br/>
+Huvuddokumentet mess.php 160 → 150 ms.<br/>
+Huvuddokumentet index.php 180 → 165 ms.<br/> 
 </p>
 <strong>
 Reflektion.
@@ -226,7 +226,7 @@ Observation efter åtgärd.
 CSS-filerna: <br/>
 dyn.css 322 → 0 ms. samt bootstrap.css 247 → 0 ms. = totalt 559 ms.<br/>
 style.css från 0 → 520 ms.</br>
-Total minskning 39 ms. (c:a 7%)
+Total minskning 39 ms. (c:a 7%)<br/>
 JS-filerna: <br/>
 MessageBoard.js 379 → 0 ms, Message.js 395 → 0 ms, jquery.js 655 -> 0 ms, bootstrap.js 457 → 0, script.js 321 → 0
 = totalt 2209<br/>
