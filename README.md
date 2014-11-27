@@ -206,3 +206,63 @@ Reflektion.
 <p>
 På tidsskillnaderna ses att huvuddokumenten minskat medan själva filerna ökat. Det man vill komma åt här är ju tidsminskning på själva dokumentet. Här syns det, men det hade synts tydligare om omfattningen på koden som flyttats varit större. Tidsvinsten med att samma fil kan återanvändas istället för att koden ska skrivas om finns inte heller med.
 </p>
+<h3>Åtgärd - Minimera JavaScript och CSS</h3>
+<strong>
+Teori och referens.
+</strong>
+<p>
+Beroende på vilken teknik man använder (JSMin eller Obfuscation) minskar man storleken på sina script och filer genom att ta bort kommentarer, tabbar, blanksteg. Man gör dem även mer svårläsbara för människor. Att göra detta minskar kanske inte storleken lika mycket som att använda Gzip, men är ändå en användbar åtgärd då det minskar storleken på scripten med i snitt 20%. Tas upp i kapitel 10 i boken.
+</p>
+<strong>
+Observation innan åtgård.
+</strong>
+<p>
+CSS flyttades till style.css och Javascripten flyttades till script.min.js.
+</p>
+<strong>
+Observation efter åtgärd.
+</strong>
+<p>
+CSS-filerna: <br/>
+dyn.css 322 → 0 ms. samt bootstrap.css 247 → 0 ms. = totalt 559 ms.<br/>
+style.css från 0 → 520 ms.</br>
+Total minskning 39 ms. (c:a 7%)
+JS-filerna: <br/>
+MessageBoard.js 379 → 0 ms, Message.js 395 → 0 ms, jquery.js 655 -> 0 ms, bootstrap.js 457 → 0, script.js 321 → 0
+= totalt 2209<br/>
+script.min.css från 0 → 892 ms.</br>
+Total minskning 1317 ms. (c:a 60%)
+</p>
+<strong>
+Reflektion.
+</strong>
+<p>
+På denna punkt märktes stor skillnad. Förmodligen blev skillnaden, som här var högt över snittet för metoden, här onödigt stor pga att ingen gzip gjorts innan.
+</p>
+
+
+<h3>Åtgärd - Ta bort dupplicerade script</h3>
+<strong>
+Teori och referens.
+</strong>
+<p>
+...
+</p>
+<strong>
+Observation innan åtgård.
+</strong>
+<p>
+...
+</p>
+<strong>
+Observation efter åtgärd.
+</strong>
+<p>
+...
+</p>
+<strong>
+Reflektion.
+</strong>
+<p>
+...
+</p>
