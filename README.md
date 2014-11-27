@@ -97,7 +97,7 @@ Vad för skada kan säkerhetsbristen göra?
 Hur du har åtgärdat säkerhetshålet i applikationskoden?
 </strong>
 <p>
-CSRF förebyggs i applikationen genom användning av token. I samband med addToDB-funktionen skickas även en token med, denna ligger i GET och sätts sendMessage-funktionen i MessageBoard. 
+CSRF förebyggs i applikationen genom användning av token. I samband med addToDB-funktionen skickas även en token med, denna ligger i GET och sätts sendMessage-funktionen i MessageBoard, där jämförs $_SESSION['token'] mot token som skickats in i funktionen.
 </p>
 
 
