@@ -97,8 +97,31 @@ Hur du har åtgärdat säkerhetshålet i applikationskoden?
 <p>
 CSRF förebyggs i applikationen genom användning av token. I samband med addToDB-funktionen görs även en kontroll av att användarens token. Tokenet består av ett unikt sessions'id, och sätts i ett dolt fält på den inloggade sidan (mess.php). Det är krypterat och saltat med hjäp av metoden password_hash.
 </p>
-
-
+<h3>Säkerhetsrisk - Okrypterade lösenord i databasen</h3>
+<strong>
+Redogör för det säkerhetshål du hittat.
+</strong>
+<p>
+De befintliga användarna till applikationen hade sina lösenord lagrade i klartext i databasen.
+</p>
+<strong>
+Redogör för hur säkerhetshålet kan utnyttjas.
+</strong>
+<p>
+Om någon tar sig in i databasen så ser denna direkt vilka användare som finns och vilka lösenord som är kopplade till dessa.
+</p>
+<strong>
+Vad för skada kan säkerhetsbristen göra?
+</strong>
+<p>
+Den största skadan är kanske inte att användaren kan ta sig in i den här applikationen via användarens inloggningsuppgifter, utan att lösenorden kan ha använts av användaren i flera andra applikationer. Attackeraren kan t.ex på brova logga in med dessa uppgifter i andra större applikationer och hoppas komma in någonstans. I någon annan av dessa applikationer kanske även en e-postadress finns sparad bland användaruppgifterna, och man kan försöka logga in på användarens e-post konto med samma lösenord. Har man sedan tillgång till e-postadressen är det bara att söka vidare vilka andra tjänster användaren använder. Har man tillgång till e-postadressen är det bara att använda "glömt ditt lösenord"-tjänsten för alla applikationer man vill komma in på. Man kan även registrera sig på olika konton och bekräfta kontot med e-postadressen.
+</p>
+<strong>
+Hur du har åtgärdat säkerhetshålet i applikationskoden?
+</strong>
+<p>
+Alla lösenord i databasen är nu hashade (krypterade + saltade) med php funktionen password_hash, funktionen användes bara en gång, men ligger kvar i längst uppe i klassen Applikation och heter hashPasswords(). Vid inloggning används metoden password_verify för kontroll av lösenordet. 
+</p>
 <h3>Säkerhetsrisk - Session hijacking</h3>
 <strong>
 Redogör för det säkerhetshål du hittat.
