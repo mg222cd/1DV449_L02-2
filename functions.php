@@ -16,7 +16,7 @@ if(isset($_GET['function'])) {
 			$application->logout();
 			break;
 		case 'add':
-			$application->addToDB($_GET["message"],  $_GET["name"]);
+			$application->addToDB($_GET["message"], $_GET["name"], $_GET['token']);
 			break;
 		case 'getMessages':
 			echo $application->getMessages($_GET['id']);

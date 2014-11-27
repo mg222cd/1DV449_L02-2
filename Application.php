@@ -2,6 +2,13 @@
 
 class Application{
 
+private function hashPasswords(){
+	$users = $this->callToDatabase("SELECT * FROM users");
+	foreach ($users as $user) {
+		$this->callToDatabase("UPDATE users SET password = ? WHERE username = ?", array(password_hash($user['password'], PASSWORD_DEFAULT), $user[2]));
+	}
+}	
+
 private function callToDatabase($q, $sqlParams = array()){
 	$db = null;
 	//strip tags
@@ -32,13 +39,14 @@ private function callToDatabase($q, $sqlParams = array()){
 /**
 * Called from AJAX to add stuff to DB
 */
-public function addToDB($message, $user) {
-
+public function addToDB($message, $user, $token) {
+	if($token == $_SESSION['token']) {
 		$q = "INSERT INTO messages (message, name) VALUES(?, ?)";
 		$this->callToDatabase($q, array($message, $user));
 		
 		$q = "SELECT * FROM users WHERE username = ?";
 		$result = $this->callToDatabase($q, array($user));
+
 		if($result != false) {
 			echo "Message saved by user: " . json_encode($result);
 		}else{
@@ -46,6 +54,7 @@ public function addToDB($message, $user) {
 		}
 		header("Location: test/debug.php");
 	}
+}
 
 /*
 Just som simple scripts for session handling
@@ -82,16 +91,17 @@ public function checkUser() {
 
 public function loginUser($u, $p) {
 	if(isset($u) && isset($p)) {
-			$q = "SELECT id FROM users WHERE username = ? AND password = ?";
-			$result = $this->callToDatabase($q, array($u, $p));
+			$q = "SELECT * FROM users WHERE username = ?";
+			$result = $this->callToDatabase($q, array($u))[0];
 			if($result != false) {
+				if (password_verify($p, $result['password'])) {
 				$_SESSION['username'] = $u;
 				$_SESSION['login_string'] = password_hash($u . $_SERVER['HTTP_USER_AGENT'], PASSWORD_DEFAULT);
 				header("Location: mess.php");
 				die;
 			}
+			}
 		}
-
 		header('HTTP/1.1 401 Unauthorized');
 		die("Could not find the user");
 }
@@ -118,14 +128,21 @@ public function getMessages($id=0) {
 		$return = array();
 		$q = "SELECT * FROM messages WHERE serial > ?";
 		$return = $this->callToDatabase($q, array($id));
-
 		if (count($return) > 0 ) {
 			$id = $return[count($return)-1][0];
 			echo json_encode(array('id'=>$id,'messages'=>$return));
 			break;
 		}
+		sleep(1);
 	}
-	
+}
+
+public function csrf_token(){
+	if (!isset($_SESSION['token'])) {
+		$_SESSION['token'] = password_hash(session_id(), PASSWORD_DEFAULT);
+		return $_SESSION['token'];
+	}
+	return $_SESSION['token'];	
 }
 
 

@@ -24,6 +24,7 @@ $application->checkUser();
                 Name:<br /> <input id="inputName" type="text" name="name" /><br />
                 Message: <br />
                 <textarea name="mess" id="inputText" cols="55" rows="6"></textarea>
+                <input name="token" id="inputToken" type="hidden" value="<?php echo $application->csrf_token(); ?>">
                 <input class="btn btn-primary" type="button" id="buttonSend" value="Write your message" />
                 <span class="clear">&nbsp;</span>
             </div>
