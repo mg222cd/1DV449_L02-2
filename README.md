@@ -153,31 +153,28 @@ Reflektion.
 <p>
 Tidsskillnaden blev tydlig för varje bild, men resultatet knappt märkbart på huvudsidan. Förmodligen större vinst att göra detta i de fall så man har fler bilder på sidan.
 </p>
-
-<h3>CSS placeras högst upp med link-taggen</h3>
+<h3>Inlänkning av filer. JavaScript-filer sist och CSS-filer först i dokumentet.</h3>
 <strong>
 Teori och referens.
 </strong>
 <p>
-...
+Att placera JavaScript-filer längst ned (istället för längst upp) har att göra med "preogressiv rendering". JavaScript blockerar all rendering så länge scripten läses in, och därför vill man läsa in scripten sist. Detta tas upp i kapitel 6 i boken. Av samma anledning - fast tvärtom (att renderingen är blockad innan all CSS lästs in) vill man lägga in CSS-filerna först i dokumentet, inlänkade med link-taggen (tas upp i kapitel 6 i boken). 
 </p>
 <strong>
 Observation innan åtgård.
 </strong>
 <p>
-...
+All CSS fanns redan inlänkad korrekt med link-taggen i head. Däremot fanns endel JavaScript-filer längst upp i dokumentet. Dessa flyttades till längst ned på sidan.
 </p>
 <strong>
 Observation efter åtgärd.
 </strong>
 <p>
-Logon från 230 → 0 ms.<br/>
-Oanvänd p.jpg 266 → 0 ms.<br/>
-mess.php från 200 → 190 ms.<br/>
+3 st JavaScript filer flyttades i index.php, från längst upp till längst ned. Ingen tidsskillnad uppstod dock på laddningstiden.
 </p>
 <strong>
 Reflektion.
 </strong>
 <p>
-...
+På själva scripten märks ju ingen tidsskillnad iom. dessa åtgärder. Det som däremot bör märkas på är laddningstiden för hela dokumentet. I det här fallet var dokumentet för litet för att någon märkbar skillnad skulle kunna observeras.
 </p>
