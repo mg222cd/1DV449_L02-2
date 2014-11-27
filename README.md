@@ -72,6 +72,35 @@ Hur du har åtgärdat säkerhetshålet i applikationskoden?
 <p>
 Alla databasfunktioner (och kod som körs många gånger) är flyttade till en ny funktion "callToDatabase". Här används korrekt PDO-syntax och parametrarna körs igenom prepare() execute()-funktionen istället för att läggas in direkt i SQL-frågan.
 </p>
+
+
+<h3>Säkerhetsrisk - Cross-site request forgery (CSRF)</h3>
+<strong>
+Redogör för det säkerhetshål du hittat.
+</strong>
+<p>
+...
+</p>
+<strong>
+Redogör för hur säkerhetshålet kan utnyttjas.
+</strong>
+<p>
+...
+</p>
+<strong>
+Vad för skada kan säkerhetsbristen göra?
+</strong>
+<p>
+...
+</p>
+<strong>
+Hur du har åtgärdat säkerhetshålet i applikationskoden?
+</strong>
+<p>
+CSRF förebyggs i applikationen genom användning av token. I samband med addToDB-funktionen skickas även en token med, denna ligger i GET och sätts sendMessage-funktionen i MessageBoard. 
+</p>
+
+
 <h3>Säkerhetsrisk - Session hijacking</h3>
 <strong>
 Redogör för det säkerhetshål du hittat.
