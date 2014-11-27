@@ -72,32 +72,30 @@ Hur du har åtgärdat säkerhetshålet i applikationskoden?
 <p>
 Alla databasfunktioner (och kod som körs många gånger) är flyttade till en ny funktion "callToDatabase". Här används korrekt PDO-syntax och parametrarna körs igenom prepare() execute()-funktionen istället för att läggas in direkt i SQL-frågan.
 </p>
-
-
-<h3>Säkerhetsrisk - Cross-site request forgery (CSRF)</h3>
+<h3>Säkerhetsrisk - Cross-Site Request Forgery (CSRF)</h3>
 <strong>
 Redogör för det säkerhetshål du hittat.
 </strong>
 <p>
-...
+På applikationen fanns inget skydd mot CSRF-attacker iom. att det inte skickades med och kontrollerades någon unik token i samband med postning av meddelanden.
 </p>
 <strong>
 Redogör för hur säkerhetshålet kan utnyttjas.
 </strong>
 <p>
-...
+Om användaren har en session till applikationen öppen och samtidigt hamnar på en sida styrd av CSRF-atackerare, kan detta leda till att den atackerande sidan börjar skicka förfrågningar till applikationen. Den har inte tillgång till sessionen, men genom att anta att en sådan finns provar man göra olika typer av förfrågningar och hoppas på att sessionen ska användas av applikationens webbserver för identifiering av anropen.
 </p>
 <strong>
 Vad för skada kan säkerhetsbristen göra?
 </strong>
 <p>
-...
+Genom att CSRF-atacker lånar webbläsaren istället för sessioner, används denna för att försöka göra olika typer av GET och POST förfrågningar. Det kan vara postningar av meddelanden och bilder, banköverföringar eller genom att skicka upprepade GET-förfrågningar, för att styra om reklam och manipulera statistik. I den här applikationen är kan det användas för att skicka meddelanden.
 </p>
 <strong>
 Hur du har åtgärdat säkerhetshålet i applikationskoden?
 </strong>
 <p>
-CSRF förebyggs i applikationen genom användning av token. I samband med addToDB-funktionen skickas även en token med, denna ligger i GET och sätts sendMessage-funktionen i MessageBoard, där jämförs $_SESSION['token'] mot token som skickats in i funktionen.
+CSRF förebyggs i applikationen genom användning av token. I samband med addToDB-funktionen görs även en kontroll av att användarens token. Tokenet består av ett unikt sessions'id, och sätts i ett dolt fält på den inloggade sidan (mess.php). Det är krypterat och saltat med hjäp av metoden password_hash.
 </p>
 
 
