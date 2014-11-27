@@ -27,7 +27,7 @@ I mess.php har inkluderingen av get.php bytts ut mot Application.php
 Redogör för det säkerhetshål du hittat.
 </strong>
 <p>
-Man kan i alla skicka in HTML-taggar och Javascript utan att applikationen på något vis kontrollerar eller filtrerar detta.
+Man kan i alla fält skicka in HTML-taggar och Javascript utan att applikationen på något vis kontrollerar eller filtrerar detta.
 </p>
 <strong>
 Redogör för hur säkerhetshålet kan utnyttjas.
@@ -268,3 +268,6 @@ Reflektion.
 Här syns en tydlig skillnad i tidsåtgång för varje script som tas bort. Jag kan tänka mig att det här probelmet är ganska vanligt, att script läggs in på flera sidor pga ren slarvighet och okunskaper i hur det påverkar laddningstiderna.
 </p>
 <h2>Long polling</h2>
+<p>
+I samband med att sidan laddas anropas js-funktionen getMessages i MessageBoard, som tar in id-numret på det senaste meddelandet. Varje gång klienten laddar sidan sätts 0 som ett default nummer på senaste meddelandet. Här sätts $_GET['function'] till "getMessages" och även ['id'] sätts. I switch-case-satsen i functions.php, läses "getMessages", som därefter skickar vidare till funktionen getMessages i Application.php. Till denna funktion skickas id från ['id'] med. I funktionen, som inte har någon tidsbegränsning, sker hela tiden ett anrop till databasen där man kollar om det finns något meddelandenummer med id större än det senaste. Om så är fallet hämtas och json-encodas meddelandet och dess id'nr. Loopen bryts, och hela processen startar om från början.
+</p>
