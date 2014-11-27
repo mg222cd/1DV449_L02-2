@@ -153,7 +153,7 @@ Reflektion.
 <p>
 Tidsskillnaden blev tydlig för varje bild, men resultatet knappt märkbart på huvudsidan. Förmodligen större vinst att göra detta i de fall så man har fler bilder på sidan.
 </p>
-<h3>Inlänkning av filer. JavaScript-filer sist och CSS-filer först i dokumentet.</h3>
+<h3>Åtgärd - JavaScript-filer sist och CSS-filer först i dokumentet.</h3>
 <strong>
 Teori och referens.
 </strong>
@@ -177,4 +177,32 @@ Reflektion.
 </strong>
 <p>
 På själva scripten märks ju ingen tidsskillnad iom. dessa åtgärder. Det som däremot bör märkas på är laddningstiden för hela dokumentet. I det här fallet var dokumentet för litet för att någon märkbar skillnad skulle kunna observeras.
+</p>
+<h3>Åtgärd - JavaScript och CSS externt.</h3>
+<strong>
+Teori och referens.
+</strong>
+<p>
+I kapitel 8 i boken tas regeln upp om att hålla all JavaScript och CSS extern istället för inline. Detta möjliggör att filerna kan cachas, det minskar storleken på HTML-filen och gör requesten snabbare. Även om JS och CSS laddas lite snabbare om de ligger inline uppvägs detta av att vinsten i att flera sidor kan använda samma filer om de istället ligger externt. Något man nästan alltid vill och behöver göra.
+</p>
+<strong>
+Observation innan åtgård.
+</strong>
+<p>
+I filerna mess.php och index.php har inline-css flyttats till externa filer. I mess.php har inline-javascript flyttats till extern fil som istället länkats in i footern. 
+</p>
+<strong>
+Observation efter åtgärd.
+</strong>
+<p>
+För CSS-filerna: 0 → 100 ms. respektive 0 → 330 ms.
+Javascript-filen: 330 → 335 ms (efter borttagning av tomrader minskning med 2 ms till).
+Huvuddokumentet mess.php 160 → 150 ms.
+Huvuddokumentet index.php 180 → 165 ms. 
+</p>
+<strong>
+Reflektion.
+</strong>
+<p>
+På tidsskillnaderna ses att huvuddokumenten minskat medan själva filerna ökat. Det man vill komma åt här är ju tidsminskning på själva dokumentet. Här syns det, men det hade synts tydligare om omfattningen på koden som flyttats varit större. Tidsvinsten med att samma fil kan återanvändas istället för att koden ska skrivas om finns inte heller med.
 </p>
